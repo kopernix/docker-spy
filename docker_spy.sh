@@ -18,8 +18,8 @@
 # =================================================================
 
 # Directory to store log files
-LOG_DIR="logs"
-# LOG_DIR="/var/log/docker-spy"
+LOG_DIR="docker-spy-logs"
+# LOG_DIR="/var/log/docker-spy-logs"
 
 # Ensure log directory exists
 ensure_log_dir() {
