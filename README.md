@@ -52,7 +52,7 @@ chmod +x /etc/cron.hourly/docker_spy.sh
 Logrotate.d config:
 
 ```bash
-cp -a config/docker-spy-logrotate /etc/logrotate.d/docker-spy/
+sudo cp -a config/logrotate-docker-spy /etc/logrotate.d/logrotate-docker-spy
 ```
 
 
