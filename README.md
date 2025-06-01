@@ -45,14 +45,17 @@ sudo crontab -e
 or place it on your cron.hourly
 
 ```bash
-cp -a docker_spy.sh /etc/cron.hourly/
-chmod +x /etc/cron.hourly/docker_spy.sh
+sudo cp docker_spy.sh /etc/cron.hourly/
+sudo chown root:root /etc/cron.hourly/docker_spy.sh
+sudo chmod +x /etc/cron.hourly/docker_spy.sh
+
 ```
 
 Logrotate.d config:
 
 ```bash
-sudo cp -a config/logrotate-docker-spy /etc/logrotate.d/logrotate-docker-spy
+sudo cp config/logrotate-docker-spy /etc/logrotate.d/logrotate-docker-spy
+sudo chown root:root /etc/logrotate.d/logrotate-docker-spy
 ```
 
 
