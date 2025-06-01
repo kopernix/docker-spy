@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # =================================================================
-# docker_spy.sh
+# docker_spy.sh v1.0.0
 #
 # https://github.com/kopernix/docker-spy
 #
