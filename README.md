@@ -44,4 +44,8 @@ sudo crontab -e
 ```
 or place it on your cron.hourly
 
+```bash
+cp -a docker_spy.sh /etc/cron.hourly/
+chmod +x /etc/cron.hourly/docker_spy.sh
+```
 
