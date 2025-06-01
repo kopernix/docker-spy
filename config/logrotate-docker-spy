@@ -1,0 +1,7 @@
+/var/log/docker-spy-logs/*.csv {
+    daily
+    rotate 14
+    missingok
+    compress
+    dateext
+}
