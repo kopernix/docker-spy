@@ -65,6 +65,12 @@ collect_system_metrics() {
   echo "ram_used_MB,$mem_used" >> "$metrics_file"
   echo "ram_free_MB,$mem_free" >> "$metrics_file"
 
+  # SWAP usage (total, used, free) in MB
+  read swap_total swap_used swap_free _ < <(free -m | awk '/^Swap:/ {print $2, $3, $4}')
+  echo "swap_total_MB,$swap_total" >> "$metrics_file"
+  echo "swap_used_MB,$swap_used" >> "$metrics_file"
+  echo "swap_free_MB,$swap_free" >> "$metrics_file"
+
   # CPU cores
   echo "cpu_cores,$(nproc)" >> "$metrics_file"
 
