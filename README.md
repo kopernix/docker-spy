@@ -48,8 +48,14 @@ or place it on your cron.hourly
 sudo cp docker_spy.sh /etc/cron.hourly/
 sudo chown root:root /etc/cron.hourly/docker_spy.sh
 sudo chmod +x /etc/cron.hourly/docker_spy.sh
-
 ```
+
+or cron.d (every 5m)
+
+```bash
+*/5 * * * * root bash '/root/docker-spy/docker_spy.sh' >> /var/log/docker_spy.log 2>&1
+```
+_Issue #2 Need and extra logrotate config for /var/log/docker_spy.log. Not included here:_
 
 Logrotate.d config:
 
@@ -57,6 +63,8 @@ Logrotate.d config:
 sudo cp config/logrotate-docker-spy /etc/logrotate.d/logrotate-docker-spy
 sudo chown root:root /etc/logrotate.d/logrotate-docker-spy
 ```
+
+
 
 
 
