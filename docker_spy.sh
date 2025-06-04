@@ -92,12 +92,31 @@ collect_docker_containers() {
   docker ps -a --format '"{{.ID}}","{{.Image}}","{{.Command}}","{{.RunningFor}}","{{.Status}}","{{.Ports}}","{{.Names}}"' >> "$containers_file" 2>/dev/null
 }
 
+# Collect a one‐time snapshot from `docker stats` and save CSV and txt
+
+collect_docker_stats() {
+  local stats_file="$LOG_DIR/docker_stats_${timestamp}.csv"
+  local stats_file_human="$LOG_DIR/docker_stats_${timestamp}.log"
+
+  # Header line for CSV
+  echo "container_id,name,cpu_pct,mem_usage,mem_percent,net_io,block_io,pids" > "$stats_file"
+
+  # Use `docker stats --no-stream --format` to get a single snapshot
+  docker stats --no-stream \
+    --format '{{.Container}},{{.Name}},{{.CPUPerc}},{{.MemUsage}},{{.MemPerc}},{{.NetIO}},{{.BlockIO}},{{.PIDs}}' \
+    >> "$stats_file" 2>/dev/null
+
+  docker stats --no-stream >> "$stats_file_human" 2>/dev/null
+
+}
+
 # Main function
 main() {
   ensure_log_dir
   collect_system_metrics
   collect_disk_usage
   collect_docker_containers
+  collect_docker_stats
 }
 
 # Run main
